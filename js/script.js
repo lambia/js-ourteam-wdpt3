@@ -123,7 +123,12 @@ let teamMembers = [
 
 const membriSalvati = loadMembersFromStorage();
 
-if (membriSalvati !== null) {
+// Se ho dati salvati (in localstorage), allora voglio usarli
+// altrimenti voglio usare dei dati di default
+
+if (membriSalvati == null) {
+	saveMembersToStorage(teamMembers);
+} else {
 	teamMembers = membriSalvati;
 }
 
