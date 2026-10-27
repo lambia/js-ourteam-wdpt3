@@ -102,13 +102,6 @@ const teamMembers = [
 
 /******************* PAGE INIT *********************/
 
-// Ciclo di prova in <ul>
-// const teamListEl = document.getElementById("team-list");
-
-// for (let i = 0; i < teamMembers.length; i++) {
-//   teamListEl.innerHTML += `<li>${teamMembers[i].name} - ${teamMembers[i].role}</li>`;
-// }
-
 // Renderizza cards
 renderTeam(teamMembers);
 
