@@ -123,13 +123,12 @@ let teamMembers = [
 
 const membriSalvati = loadMembersFromStorage();
 
-if (membriSalvati == null) {
-	// Renderizza cards cards di default
-	renderTeam(teamMembers);
-} else {
-	// Renderizza cards salvate in storage
-	renderTeam(membriSalvati);
+if (membriSalvati !== null) {
+	teamMembers = membriSalvati;
 }
+
+// Renderizza cards
+renderTeam(teamMembers);
 
 
 // Gestisci il form
