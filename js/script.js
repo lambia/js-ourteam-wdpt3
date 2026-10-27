@@ -59,15 +59,34 @@ function onFormSubmit(event) {
 
 	teamMembers.push(newMember);
 
+	saveMembersToStorage(teamMembers);
 	renderTeam(teamMembers);
 
 	event.target.reset();
 
 }
 
+function saveMembersToStorage(membersList) {
+
+	const datoSerializzato = JSON.stringify(membersList);
+
+	localStorage.setItem("members", datoSerializzato);
+
+}
+
+function loadMembersFromStorage() {
+
+	const datoSerializzato = localStorage.getItem("members");
+
+	const nuovoArray = JSON.parse(datoSerializzato);
+
+	return nuovoArray;
+}
+
+
 /********************** DATA ***********************/
 
-const teamMembers = [
+let teamMembers = [
 	{
 		name: 'Wayne Barnett',
 		role: 'Founder & CEO',
@@ -102,8 +121,16 @@ const teamMembers = [
 
 /******************* PAGE INIT *********************/
 
-// Renderizza cards
-renderTeam(teamMembers);
+const membriSalvati = loadMembersFromStorage();
+
+if (membriSalvati == null) {
+	// Renderizza cards cards di default
+	renderTeam(teamMembers);
+} else {
+	// Renderizza cards salvate in storage
+	renderTeam(membriSalvati);
+}
+
 
 // Gestisci il form
 const form = document.getElementById('member-form');
